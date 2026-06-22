@@ -4,7 +4,7 @@ declare(strict_types=1);
 function db(): SQLite3 {
     static $db = null;
     if ($db === null) {
-        $path = __DIR__ . '/bmf.db';
+        $path = getenv('RAILWAY_ENVIRONMENT') ? '/tmp/bmf.db' : __DIR__ . '/bmf.db';
         $db = new SQLite3($path);
         $db->enableExceptions(true);
         $db->exec('PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON;');

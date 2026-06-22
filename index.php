@@ -44,8 +44,33 @@ $tagline = e($s['tagline'] ?? '');
 <meta property="og:locale" content="id_ID">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231C4A2A'/%3E%3Cpath d='M8 24c0-9 6.5-16.5 17-17C24 17.5 17.5 24 8 24Z' fill='%23ffffff'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#1C4A2A">
 <link rel="stylesheet" href="/assets/site.css">
 <style>:root{--green-900:<?= $cp ?>;--green-500:<?= $cs ?>;}</style>
+<?php
+$ld = [
+  '@context'    => 'https://schema.org',
+  '@type'       => 'GroceryStore',
+  'name'        => $s['brand_name'] ?? 'Berkah Mandiri Fresh',
+  'description' => $s['hero_desc'] ?? '',
+  'telephone'   => '+' . $wa,
+  'address'     => [
+    '@type'         => 'PostalAddress',
+    'streetAddress' => $s['address'] ?? '',
+    'addressRegion' => 'Jawa Timur',
+    'addressCountry'=> 'ID',
+  ],
+  'areaServed'  => array_values(array_filter(array_map('trim', explode(',', $s['delivery_area'] ?? '')))),
+  'sameAs'      => array_values(array_filter([
+    !empty($s['instagram']) ? 'https://instagram.com/' . $s['instagram'] : null,
+    'https://wa.me/' . $wa,
+  ])),
+  'priceRange'  => 'Rp',
+];
+?>
+<script type="application/ld+json"><?= json_encode($ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
 </head>
 <body>
 
@@ -169,7 +194,7 @@ $tagline = e($s['tagline'] ?? '');
     <?php foreach ($items as $p):
       $pm = "Halo {$s['brand_name']} 👋\nSaya tertarik dengan produk:\n{$p['name']}\nMohon informasi harga dan ketersediaan stok.\nTerima kasih.";
       $plink = wa_link($wa, $pm);
-      $thumb = $p['image'] ? '<img src="/assets/uploads/' . e($p['image']) . '" alt="' . e($p['name']) . '" style="width:100%;height:100%;object-fit:cover;border-radius:14px">' : '<span>' . e($p['icon']) . '</span>';
+      $thumb = $p['image'] ? '<img src="/assets/uploads/' . e($p['image']) . '" alt="' . e($p['name']) . '" loading="lazy" decoding="async" width="320" height="240" style="width:100%;height:100%;object-fit:cover;border-radius:14px">' : '<span>' . e($p['icon']) . '</span>';
     ?>
     <div class="prod">
       <div class="thumb"><?= $thumb ?></div>

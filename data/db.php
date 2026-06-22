@@ -4,7 +4,11 @@ declare(strict_types=1);
 function db(): SQLite3 {
     static $db = null;
     if ($db === null) {
-        $path = getenv('RAILWAY_ENVIRONMENT') ? '/tmp/bmf.db' : __DIR__ . '/bmf.db';
+        // DB_PATH lets production point at a persistent volume (e.g. /data/bmf.db on Railway).
+        // Without it, fall back to a local file for development.
+        $path = getenv('DB_PATH') ?: __DIR__ . '/bmf.db';
+        $dir  = dirname($path);
+        if (!is_dir($dir)) @mkdir($dir, 0775, true);
         $db = new SQLite3($path);
         $db->enableExceptions(true);
         $db->exec('PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON;');

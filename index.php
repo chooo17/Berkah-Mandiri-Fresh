@@ -124,9 +124,9 @@ $tagline = e($s['tagline'] ?? '');
     <div class="hero-art-body">
       <div class="hero-art-label">Dipercaya Ratusan Pelanggan</div>
       <div class="hero-art-stats">
-        <div class="hero-art-stat"><span>1000+</span><small>Pelanggan</small></div>
-        <div class="hero-art-stat"><span>5+</span><small>Tahun Berdiri</small></div>
-        <div class="hero-art-stat"><span>10+</span><small>Jenis Produk</small></div>
+        <div class="hero-art-stat"><span data-count="1000" data-suffix="+">0</span><small>Pelanggan</small></div>
+        <div class="hero-art-stat"><span data-count="5" data-suffix="+">0</span><small>Tahun Berdiri</small></div>
+        <div class="hero-art-stat"><span data-count="10" data-suffix="+">0</span><small>Jenis Produk</small></div>
       </div>
       <div class="hero-art-tags">
         <span class="hero-art-tag">Buah Import</span>
@@ -145,7 +145,7 @@ $tagline = e($s['tagline'] ?? '');
     <h2>Produk Segar Pilihan Kami</h2>
     <p>Dipilih dari kualitas terbaik untuk kesegaran yang bisa kamu rasakan</p>
   </div>
-  <div class="cat-grid reveal">
+  <div class="cat-grid stagger">
     <?php foreach ($categories as $c): ?>
     <div class="cat">
       <div class="circle"><?= e($c['icon']) ?></div>
@@ -165,7 +165,7 @@ $tagline = e($s['tagline'] ?? '');
   </div>
   <?php foreach ($grouped as $catName => $items): ?>
   <div class="cat-label reveal"><?= e($catName) ?></div>
-  <div class="prod-grid reveal">
+  <div class="prod-grid stagger">
     <?php foreach ($items as $p):
       $pm = "Halo {$s['brand_name']} 👋\nSaya tertarik dengan produk:\n{$p['name']}\nMohon informasi harga dan ketersediaan stok.\nTerima kasih.";
       $plink = wa_link($wa, $pm);
@@ -225,7 +225,7 @@ $tagline = e($s['tagline'] ?? '');
     <h2><?= e($s['testi_headline'] ?? 'Dipercaya 1000+ Pelanggan') ?></h2>
     <p>Cerita dari keluarga, reseller, dan mitra bisnis kami</p>
   </div>
-  <div class="testi-grid reveal">
+  <div class="testi-grid stagger">
     <?php foreach ($testimonials as $t):
       preg_match_all('/\b\w/u', $t['name'], $m);
       $initials = strtoupper(implode('', array_slice($m[0], 0, 2)));
@@ -302,11 +302,38 @@ function closeNav() { nav.classList.remove('open'); overlay.classList.remove('op
 burger.addEventListener('click', () => nav.classList.contains('open') ? closeNav() : openNav());
 overlay.addEventListener('click', closeNav);
 nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) closeNav(); });
 
+/* Scroll reveal (reveal + stagger groups) */
 const io = new IntersectionObserver(es => {
   es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: .12 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+
+/* Header shadow on scroll */
+const header = document.querySelector('header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+onScroll();
+window.addEventListener('scroll', onScroll, { passive: true });
+
+/* Animated stat counters */
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const animateCount = el => {
+  const raw = el.dataset.count, num = parseInt(raw, 10);
+  if (reduce || isNaN(num)) { el.textContent = raw + (el.dataset.suffix || ''); return; }
+  const dur = 1400, t0 = performance.now(), suf = el.dataset.suffix || '';
+  const tick = now => {
+    const p = Math.min((now - t0) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(num * eased).toLocaleString('id-ID') + (p < 1 ? '' : suf);
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+};
+const statIo = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { animateCount(e.target); statIo.unobserve(e.target); } });
+}, { threshold: .6 });
+document.querySelectorAll('[data-count]').forEach(el => statIo.observe(el));
 </script>
 </body>
 </html>

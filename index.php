@@ -285,6 +285,7 @@ $tagline = e($s['tagline'] ?? '');
   </div>
   <div class="foot-bottom">© <?= date('Y') ?> <?= $brand ?>. <?= $tagline ?>.</div>
 </div></footer>
+<div class="watermark">Crafted by <span>faithdeveloper</span> &middot; <a href="mailto:choirrozikin17@gmail.com">choirrozikin17@gmail.com</a></div>
 
 <!-- Floating WA button -->
 <a class="fab" href="<?= wa_link($wa, $umum) ?>" target="_blank" rel="noopener">

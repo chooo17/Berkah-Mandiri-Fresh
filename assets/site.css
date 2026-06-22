@@ -102,7 +102,14 @@ nav a:hover{color:var(--forest)}
 .delivery .truck{font-size:18px}
 .delivery b{display:block;font-size:12.5px;font-weight:700}
 .delivery small{font-size:11px;opacity:.9;line-height:1.3}
-@media(max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:28px;padding:52px 24px 60px}.hero-art{min-height:240px}}
+@media(max-width:880px){
+  .hero .wrap{grid-template-columns:1fr;gap:24px;padding:44px 24px 52px}
+  .hero-art{min-height:auto;justify-content:flex-start;gap:0;padding:20px}
+  .delivery{position:static;align-self:flex-start;margin-bottom:20px;max-width:none;width:fit-content}
+  .hero-art-body{width:100%}
+  .hero-art-stats{gap:20px}
+  .hero-art-stat span{font-size:24px}
+}
 
 /* SECTIONS */
 .sec-head{text-align:center;max-width:580px;margin:0 auto 44px}

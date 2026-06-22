@@ -44,7 +44,6 @@ $tagline = e($s['tagline'] ?? '');
 <meta property="og:locale" content="id_ID">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
 <style>:root{--green-900:<?= $cp ?>;--green-500:<?= $cs ?>;}</style>
 </head>
@@ -52,9 +51,9 @@ $tagline = e($s['tagline'] ?? '');
 
 <!-- Topbar -->
 <div class="topbar"><div class="wrap">
-  <span>🌿 <?= $tagline ?></span>
-  <span class="hide-sm">✅ Melayani Retail, Reseller, Catering, Bakery &amp; SPPG</span>
-  <span class="hide-sm">🚚 Pengiriman Cepat Area Gresik &amp; Sekitarnya</span>
+  <span><?= $tagline ?></span>
+  <span class="hide-sm">Melayani Retail, Reseller, Catering, Bakery &amp; SPPG</span>
+  <span class="hide-sm">Pengiriman Cepat Area Gresik &amp; Sekitarnya</span>
 </div></div>
 
 <!-- Header -->
@@ -83,15 +82,23 @@ $tagline = e($s['tagline'] ?? '');
 <!-- Hero -->
 <section class="hero" id="beranda"><div class="wrap">
   <div class="hero-copy reveal">
-    <span class="eyebrow">🌱 Buah Premium, Telur Berkualitas</span>
+    <span class="eyebrow">Supplier Premium — Gresik, Jawa Timur</span>
     <h1><?= $brand ?></h1>
     <p class="tag"><?= $tagline ?></p>
     <p class="desc"><?= e($s['hero_desc'] ?? '') ?></p>
     <div class="pills">
-      <div class="pill"><span class="ic">🍃</span> Buah Segar Berkualitas</div>
-      <div class="pill"><span class="ic">🛡️</span> Higienis &amp; Terjamin</div>
-      <div class="pill"><span class="ic">🚚</span> Pengiriman Cepat &amp; Aman</div>
-      <div class="pill"><span class="ic">👑</span> Premium Quality</div>
+      <div class="pill"><span class="ic">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 19c0-7 5-13 14-14-1 9-7 14-14 14Z" fill="currentColor"/></svg>
+      </span> Segar Setiap Hari</div>
+      <div class="pill"><span class="ic">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm-1-7l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z" fill="currentColor"/></svg>
+      </span> Higienis &amp; Terjamin</div>
+      <div class="pill"><span class="ic">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
+      </span> Pengiriman Cepat</div>
+      <div class="pill"><span class="ic">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/></svg>
+      </span> Kualitas Premium</div>
     </div>
     <div class="hero-cta">
       <a class="btn btn-primary" href="<?= wa_link($wa, $umum) ?>" target="_blank" rel="noopener">Pesan Sekarang</a>
@@ -99,11 +106,24 @@ $tagline = e($s['tagline'] ?? '');
     </div>
   </div>
   <div class="hero-art reveal">
-    <span class="float f1">🍎</span><span class="float f2">🍊</span>
-    <span class="float f3">🍇</span><span class="float f4">🥚</span>
-    <span class="basket">🧺</span>
-    <div class="delivery"><span class="truck">🚚</span>
-      <div><b>Same Day Delivery</b><small>Untuk area Gresik dan sekitarnya</small></div>
+    <div class="basket">🌿</div>
+    <div class="delivery">
+      <svg class="truck" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 18.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm1.5-9.5H17V7H4a1 1 0 0 0-1 1v9h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h1v-3.5L19.5 9zM7 18.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+      <div><b>Same Day Delivery</b><small>Area Gresik &amp; sekitarnya</small></div>
+    </div>
+    <div class="hero-art-body">
+      <div class="hero-art-label">Dipercaya Ratusan Pelanggan</div>
+      <div class="hero-art-stats">
+        <div class="hero-art-stat"><span>1000+</span><small>Pelanggan</small></div>
+        <div class="hero-art-stat"><span>5+</span><small>Tahun Berdiri</small></div>
+        <div class="hero-art-stat"><span>10+</span><small>Jenis Produk</small></div>
+      </div>
+      <div class="hero-art-tags">
+        <span class="hero-art-tag">Buah Import</span>
+        <span class="hero-art-tag">Buah Lokal</span>
+        <span class="hero-art-tag">Telur Premium</span>
+        <span class="hero-art-tag">B2B &amp; Retail</span>
+      </div>
     </div>
   </div>
 </div></section>
@@ -163,12 +183,12 @@ $tagline = e($s['tagline'] ?? '');
     <div class="bisnis-card reveal">
       <h2>Solusi Kebutuhan Buah &amp; Telur untuk Bisnismu</h2>
       <ul class="biz-list">
-        <li><span class="bi">🍽️</span> Supplier Restoran</li>
-        <li><span class="bi">🥘</span> Supplier Catering</li>
-        <li><span class="bi">🥐</span> Supplier Bakery</li>
-        <li><span class="bi">🏨</span> Supplier Hotel</li>
-        <li><span class="bi">🏫</span> Supplier SPPG</li>
-        <li><span class="bi">🤝</span> Reseller</li>
+        <li><span class="bi"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-3.5-2.25-5.11-3.86-6.27-.92-.66-1.6-1.14-1.6-1.73 0-.59.68-1.07 1.6-1.73C13.78 4.11 16.03 2.5 16.03 0H1c0 2.5 2.25 4.11 3.86 5.27.92.66 1.6 1.14 1.6 1.73 0 .59-.68 1.07-1.6 1.73C3.25 9.89 1 11.5 1 14.99v1.02h15.03v-1.02z"/></svg></span> Supplier Restoran</li>
+        <li><span class="bi"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L2 12h3v8h6v-5h2v5h6v-8h3L12 3z"/></svg></span> Supplier Catering</li>
+        <li><span class="bi"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg></span> Supplier Bakery</li>
+        <li><span class="bi"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg></span> Supplier Hotel</li>
+        <li><span class="bi"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></span> Supplier SPPG</li>
+        <li><span class="bi"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></span> Reseller</li>
       </ul>
       <div style="margin-top:26px">
         <a class="btn btn-primary" href="<?= wa_link($wa, $bisnis) ?>" target="_blank" rel="noopener">Konsultasikan Kebutuhan Bisnis</a>
@@ -219,7 +239,7 @@ $tagline = e($s['tagline'] ?? '');
     <p class="sub">Melayani pengiriman cepat ke seluruh Gresik &amp; sekitarnya</p>
     <div class="chips">
       <?php foreach (array_filter(array_map('trim', explode(',', $s['delivery_area'] ?? ''))) as $a): ?>
-      <span class="chip">📍 <?= e($a) ?></span>
+      <span class="chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> <?= e($a) ?></span>
       <?php endforeach; ?>
     </div>
     <div style="margin-top:30px">
@@ -238,9 +258,9 @@ $tagline = e($s['tagline'] ?? '');
     <div>
       <h5>Kontak</h5>
       <ul>
-        <li><a href="<?= wa_link($wa, $umum) ?>" target="_blank" rel="noopener">💬 <?= e($s['wa_number'] ?? '') ?></a></li>
-        <li><a href="https://instagram.com/<?= e($s['instagram'] ?? '') ?>" target="_blank" rel="noopener">📷 @<?= e($s['instagram'] ?? '') ?></a></li>
-        <li>📍 <?= e($s['address'] ?? '') ?></li>
+        <li><a href="<?= wa_link($wa, $umum) ?>" target="_blank" rel="noopener"><?= e($s['wa_number'] ?? '') ?></a></li>
+        <li><a href="https://instagram.com/<?= e($s['instagram'] ?? '') ?>" target="_blank" rel="noopener">@<?= e($s['instagram'] ?? '') ?></a></li>
+        <li><?= e($s['address'] ?? '') ?></li>
       </ul>
     </div>
     <div>

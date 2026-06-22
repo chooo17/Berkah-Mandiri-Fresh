@@ -62,14 +62,24 @@ $tagline = e($s['tagline'] ?? '');
     <span class="leaf"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 19c0-7 5-13 14-14-1 9-7 14-14 14Z" fill="currentColor"/><path d="M5 19c2-5 5-8 9-10" stroke="#0f3d22" stroke-width="1.5" stroke-linecap="round"/></svg></span>
     <span><?= $brand ?></span>
   </a>
-  <nav id="nav"><ul>
-    <li><a href="#beranda">Beranda</a></li>
-    <li><a href="#katalog">Katalog</a></li>
-    <li><a href="#bisnis">Untuk Bisnis</a></li>
-    <li><a href="#testimoni">Testimoni</a></li>
-    <li><a href="#kontak">Kontak</a></li>
-  </ul></nav>
-  <a class="nav-wa" href="<?= wa_link($wa, $umum) ?>" target="_blank" rel="noopener">
+  <nav id="nav">
+    <div class="nav-brand">
+      <span class="leaf"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 19c0-7 5-13 14-14-1 9-7 14-14 14Z" fill="currentColor"/></svg></span>
+      <span><?= $brand ?></span>
+    </div>
+    <ul>
+      <li><a href="#beranda">Beranda</a></li>
+      <li><a href="#katalog">Katalog</a></li>
+      <li><a href="#bisnis">Untuk Bisnis</a></li>
+      <li><a href="#testimoni">Testimoni</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+    <a class="nav-wa" href="<?= wa_link($wa, $umum) ?>" target="_blank" rel="noopener">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm4.4 12c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.6 6.6 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.5.5 0 0 0 0-.5c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6 7.9a4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.7 2 .6 2.4.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3Z"/></svg>
+      <span class="lbl">Pesan via WhatsApp</span>
+    </a>
+  </nav>
+  <a class="nav-wa hdr-wa" href="<?= wa_link($wa, $umum) ?>" target="_blank" rel="noopener">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm4.4 12c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.6 6.6 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.5.5 0 0 0 0-.5c0-.1-.5-1.3-.7-1.7s-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6 7.9a4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.7 2 .6 2.4.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3Z"/></svg>
     <span class="lbl">Pesan via WhatsApp</span>
   </a>

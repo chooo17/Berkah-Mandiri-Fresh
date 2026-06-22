@@ -110,7 +110,7 @@ nav .nav-wa{display:none}
   nav .nav-wa:hover{background:var(--amber-lt);transform:none}
   nav .nav-wa span.lbl{display:inline}
 }
-.nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:199;opacity:0;transition:opacity .3s}
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:49;opacity:0;transition:opacity .3s}
 .nav-overlay.open{display:block;opacity:1}
 
 /* HERO */

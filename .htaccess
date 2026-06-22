@@ -1,0 +1,11 @@
+# Berkah Mandiri Fresh — Apache URL rewrite
+Options -Indexes
+RewriteEngine On
+
+# Block direct access to data/ folder
+RewriteRule ^data/(.*)$ - [F,L]
+
+# Route clean URLs (optional, site works without this too)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]

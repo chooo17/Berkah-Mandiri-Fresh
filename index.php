@@ -44,7 +44,8 @@ $tagline = e($s['tagline'] ?? '');
 <meta property="og:locale" content="id_ID">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Lora:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/assets/hero-bg.jpg" fetchpriority="high">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231C4A2A'/%3E%3Cpath d='M8 24c0-9 6.5-16.5 17-17C24 17.5 17.5 24 8 24Z' fill='%23ffffff'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#1C4A2A">
 <link rel="stylesheet" href="/assets/site.css">
